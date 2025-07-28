@@ -51,7 +51,7 @@ python generate_dataset.py
 
 ---
 
-### Step 2: Run Large Model Inference (for RQ1 & RQ2)
+### Step 2: Run Large Model Inference (for RQ1)
 
 Activate the large model environment and execute:
 
@@ -59,22 +59,41 @@ Activate the large model environment and execute:
 sh run.sh 5 gpt-3.5-turbo Full
 ```
 
-✅ This command generates model outputs required for **RQ1 and RQ2**, saved in the `results/` folder.
-
 ---
 
-### Step 3: Evaluate RQ1 and RQ2
+### Step 3: Evaluate RQ1 
 
 Run the evaluation scripts:
 
 ```bash
 sh eval.sh RQ1
+```
+
+---
+
+### Step 4: Run Large Model Inference (for RQ2)
+
+Activate the large model environment and execute:
+
+```bash
+sh run.sh 5 gpt-4o-mini Full
+sh run.sh 5 qwen-turbo Full
+sh run.sh 5 gemini-2.0-flash Full
+```
+
+---
+
+### Step 5: Evaluate RQ2 
+
+Run the evaluation scripts:
+
+```bash
 sh eval.sh RQ2
 ```
 
 ---
 
-### Step 4: Obtain RQ3 Results (Ablation Study)
+### Step 6: Obtain RQ3 Results (Ablation Study)
 
 RQ3 evaluates the impact of context configurations. Run the following commands **in sequence**:
 
@@ -90,30 +109,5 @@ sh eval.sh RQ3
 ```
 
 This will compare performance across `Full`, `Nfc`, and `One` context settings, validating the effectiveness of contextual information.
-
----
-
-
-## 📝 Notes
-
-1. **API Cost Management**: The `run.sh` script makes multiple API calls — monitor usage carefully. Test with a small subset first.
-2. **Network Stability**: API requests may fail due to connection issues. Retry logic is included, but manual monitoring is recommended.
-3. **Environment Isolation**: Always activate the correct environment (`jit-small` or `jit-large`) before running scripts.
-4. **Custom Models**: You can replace `gpt-3.5-turbo` with other models like `gpt-4` or `gpt-4-turbo` for ablation or comparison studies.
-
----
-
-## 📚 Citation
-
-If you use this codebase, please cite the original work:
-
-```bibtex
-@article{jit-smart,
-  title={JIT-Smart: Just-in-Time Defect Prediction and Repair via Large Language Models},
-  author={JIT-A Team},
-  journal={IEEE Transactions on Software Engineering},
-  year={2024}
-}
-```
 
 ---
